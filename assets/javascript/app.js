@@ -5,26 +5,27 @@
 
 $(document).ready(function(){
     let things = ["cat", "dog", "horse", "fire", "clouds"];
-    function populateButtons(arrayToUse, classToAdd, areaToAddto){
-        $(areaToAddto).empty();
+    
+    function populateButtons(arrayToUse, classToAdd, areaToAddTo){
+        $(areaToAddTo).empty();
 
         for (let i = 0; i < arrayToUse.length; i++){
             let a = $("<button>");
             a.addClass(classToAdd);
             a.attr("data-type", arrayToUse[i]);
             a.text(arrayToUse[i]);
-            $(areaToAddto).append(a);
+            $(areaToAddTo).append(a);
 
      }
     }
     $(document).on("click", ".giphy-button", function(){
-        $("images").empty();
+        $("#images").empty();
 
         $(".giphy-button").removeClass("active");
         $(this).addClass("active");
 
-        var type = $(this).attr("data-type");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+        let type = $(this).attr("data-type");
+        let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=dc6zaTOxFJmzC&limit=10";
 
         $.ajax({
             url: queryURL,
