@@ -25,7 +25,8 @@ $(document).ready(function(){
         $(this).addClass("active");
 
         let type = $(this).attr("data-type");
-        let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=dc6zaTOxFJmzC&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+            type + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
         $.ajax({
             url: queryURL,
@@ -38,9 +39,6 @@ $(document).ready(function(){
                 for(var i = 0; i < results.length; i++){
                     let giphyDiv = $("<div class=\"giphy-item\">");
 
-                    let rating = results.rating[i];
-
-                    let p = $("<p>").text("Rating" + rating);
 
                     let animated = results[i].images.fixed_height.url;
                     let still = results[i].images.fixed_height_still.url;
@@ -52,7 +50,6 @@ $(document).ready(function(){
                     giphyImage.attr("data-state", "still");
                     giphyImage.addClass("giphy-image");
 
-                    giphyDiv.append(p);
                     giphyDiv.append(giphyImage);
                     
                     $("#images").append(giphyDiv);
